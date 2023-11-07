@@ -31,7 +31,7 @@ public class LionParamTest {
 
        Feline felineMock = mock(Feline.class);
 
-        Lion lion = new Lion(gender,felineMock);
+        Lion lion = new Lion(gender, felineMock);
         boolean actualResult = lion.doesHaveMane();
         assertEquals("Самец или Самка", hasMane, actualResult);
     }

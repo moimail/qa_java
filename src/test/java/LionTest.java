@@ -1,21 +1,30 @@
 import com.example.Feline;
 import com.example.Lion;
+import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 
+@RunWith(MockitoJUnitRunner.class)
 public class LionTest {
+
+    private Feline feline;
+
+
+
+
 
     @Test(expected = AssertionError.class)
     public void lionHasManeTest() throws Exception {
 
-        Feline felineMock = mock(Feline.class);
+
         try {
-            new Lion("Не определено", felineMock);
+            new Lion("Не определено", feline);
         } catch (Exception ex) {
             assertEquals("Используйте допустимые значения пола животного - самец или самка", ex.getMessage());
         }
@@ -25,13 +34,14 @@ public class LionTest {
     public void getKittensTest() throws Exception {
 
         //Arange
-        Feline felineMock = mock(Feline.class);
-        Lion lion = new Lion("Самец",felineMock);
+        Lion lion = new Lion("Самец", feline);
         int expectedResult = 1;
         //Act
         int actualResult = lion.getKittens();
         //Assert
-        assertEquals(expectedResult,actualResult);
+        Assert.assertEquals(expectedResult, actualResult);
+
+
 
     }
 
@@ -39,8 +49,8 @@ public class LionTest {
     public void getFoodTest() throws Exception{
 
         //Arrange
-        Feline felineMock = mock(Feline.class);
-        Lion lion = new Lion("Самец",felineMock);
+
+        Lion lion = new Lion("Самец", feline);
         List<String> expectedResult = Arrays.asList("Животные", "Птицы", "Рыба");
         //Act
         List<String> actualResult = lion.getFood();
