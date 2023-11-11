@@ -28,7 +28,7 @@ public void setUpMocks(){
     @Test(expected = AssertionError.class)
     public void lionHasManeTest() throws Exception {
 
-        Feline felineMock = mock(Feline.class);
+        Feline feline = mock(Feline.class);
 
         try {
             new Lion("Не определено", feline);
